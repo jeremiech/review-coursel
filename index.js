@@ -1,11 +1,12 @@
-function sumTwoArray(arr,arr1){
+function manipulateValues(...n){
+    let evenArray=[]
+    let oddArray=[]
   
-    let newArr=[]
-let sum=[]
-    newArr.push(...arr1)
-for(let i=0;i<arr.length;i++){
-    console.log(arr[i]+newArr[i])
-}    
+    for(let i=0;i<n.length;i++){
+        if(n[i]%2==0) evenArray.push(Math.floor(Math.sqrt(n[i])))
+        else oddArray.push(n[i]**2)
+
+    }
+    return evenArray.concat(oddArray).join(" ")
 }
-let assum=sumTwoArray([3,3,2],[1,2,6])
-console.log(assum)
+console.log(manipulateValues(4,3,9,7,2,1))
