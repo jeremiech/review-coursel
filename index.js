@@ -1,12 +1,18 @@
-function manipulateValues(...n){
-    let evenArray=[]
-    let oddArray=[]
-  
-    for(let i=0;i<n.length;i++){
-        if(n[i]%2==0) evenArray.push(Math.floor(Math.sqrt(n[i])))
-        else oddArray.push(n[i]**2)
+
+function deepCloning(obj){
+    let newObj={...obj}
+    for(let i in newObj){
+        if(typeof newObj[i]==='object'){
+            newObj[i]=deepCloning(newObj[i])
+        }
 
     }
-    return evenArray.concat(oddArray).join(" ")
+    return newObj
 }
-console.log(manipulateValues(4,3,9,7,2,1))
+// let circle1 = {
+//     radius: 100,
+//     center: {
+//         x: 100,
+//          y: 100
+//     }};
+//     console.log(deepCloning(circle1))
