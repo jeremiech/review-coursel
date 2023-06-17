@@ -1,24 +1,10 @@
-let someInteger = 129;
+const math=require('mathjs')
+let arrDate=[31, 10, 1991]
 
-function swapDigits(arr){
-    let digits=arr.toString().split('')
-    if(digits.length%2==0)
+let day=1000*3600*24
+let date=new Date(`${arrDate[1]}/${arrDate[0]}/${arrDate[2]}`).getTime()
+let difDate=new Date(`${1}/${1}/${arrDate[2]}`).getTime()
+let realDateDiff=math.subtract(date,difDate)+1
+console.log(Math.ceil(realDateDiff/day))
 
-{
-    
-    for(let i=0;i<digits.length-1;i+=2){
-        const tmp=digits[i]
-        digits[i]=digits[i+1]
-        digits[i+1]=tmp
-    }
-}else{
-    for(let i=1;i<digits.length-1;i+=2){
-        const tmp=digits[i]
-        digits[i]=digits[i+1]
-        digits[i+1]=tmp
-    }
-}
-    return Number.parseInt(digits.join(""))
-}
 
-  console.log(swapDigits(someInteger))
