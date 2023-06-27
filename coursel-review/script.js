@@ -1,22 +1,25 @@
-// window.onload=chooseImageRandomly
+window.onload=chooseImageRandomly
+const rdm_btn=document.querySelector('#random')
 const slides = document.querySelectorAll(".slide");
 const next = document.querySelector("#next-btn");
 var currentSlide = 0;
 var maxSlide = slides.length;
 
-const title_=document.querySelector(".name-title")
-const occupation_=document.querySelector('.occupation')
-const bio_=document.querySelector('.biography')
-const image_=document.querySelector('.image')
-const img_array=[
+const title_=document.querySelector("#name-title")
+const occupation_=document.querySelector('#occupation')
+const bio_=document.querySelector('#biography')
+const image_=document.querySelector('#image')
+let img_array=[
+   
     {
-        title:'jack chan',
-        occupation:'Movie Actor',
-        bio:'Everyone knows Jackie Chan. Whether it’s from Rush Hour, Shanghai Noon, The Karate Kid, or Kung Fu Panda, Jackie is admired by generations of moviegoers for his acrobatic fighting style, comic timing, and mind-bending stunts.',
-        image:'/images/Jackie-Chan.webp'
-       
+      title:'jack chan',
+      occupation:'Movie Actor',
+      bio:'Everyone knows Jackie Chan. Whether it’s from Rush Hour, Shanghai Noon, The Karate Kid, or Kung Fu Panda, Jackie is admired by generations of moviegoers for his acrobatic fighting style, comic timing, and mind-bending stunts.',
+      image:'/images/Jackie-Chan.webp'
+     
 
-    },
+  
+   },
     {
         title:'jet li',
         occupation:'Movie actor',
@@ -37,30 +40,37 @@ const img_array=[
     }
 
 ]
-const randomSide=Math.floor(Math.random()*img_array.length)
+var randomSide=Math.floor(Math.random()* img_array.length)
 function chooseImageRandomly(){
-image_.src=img_array[randomSide].image
+//  console.log(img_array[randomSide]?.image)
+//   console.log(img_array[randomSide]?.bio)
+  // console.log(img_array[randomSide].occupation)
+
+  // return console.log(randomSide,`image size: ${img_array.length}`)
+ image_.src=img_array[randomSide].image
 bio_.innerHTML=img_array[randomSide].bio
 occupation_.innerHTML=img_array[randomSide].occupation
 title_.innerHTML=img_array[randomSide].title
+
+// console.log(img_array[randomSide].image)
 
 }
 
 
 
-document.querySelector('.random').addEventListener('click',chooseImageRandomly)
+rdm_btn.addEventListener('click',chooseImageRandomly)
 
 
 next.addEventListener("click", () => {
-  if (currentSlide === maxSlide) currentSlide = 0;
+  if (currentSlide === maxSlide-1) {currentSlide = 0;}
   else currentSlide++;
   slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(${index * 100}%)`;
+    slide.style.transform = `translateX(${(index-currentSlide) * 100}%)`;
   });
 });
 document.getElementById("prev-btn").addEventListener("click", () => {
-  if (currentSlide === 0) currentSlide = maxSlide;
-  else currentSlide--;
+  if (currentSlide === 0) {currentSlide = maxSlide-1;}
+   else currentSlide--;
   slides.forEach((slide, index) => {
     slide.style.transform = `translateX(${(index - currentSlide) * 100}%)`;
   });
