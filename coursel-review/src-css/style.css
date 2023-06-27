@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ .slider{
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+
+ }
+ .slider  .slide{
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    position: absolute;
+    transition: all 0.5s;
+    padding: 10px;
+    background-color: white;
+    
+ }
